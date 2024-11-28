@@ -13,8 +13,7 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
 
         if (!response.ok) throw new Error('Login falhou');
 
-        // Login bem-sucedido, redireciona para a tela de gestão
-        window.location.href = 'gestao.html'; // Redireciona para gestão
+        window.location.href = 'gestao.html';
     } catch (error) {
         alert('Erro: ' + error.message);
     }
