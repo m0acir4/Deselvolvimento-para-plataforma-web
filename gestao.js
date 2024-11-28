@@ -1,12 +1,12 @@
 const userTable = document.querySelector('#userTable tbody');
 
-// Carregar usuários
+
 async function loadUsers() {
     try {
         const response = await fetch('http://localhost:3000/usuarios');
         const users = await response.json();
 
-        userTable.innerHTML = ''; // Limpa a tabela
+        userTable.innerHTML = ''; 
 
         users.forEach((user) => {
             const row = document.createElement('tr');
@@ -27,13 +27,13 @@ async function loadUsers() {
     }
 }
 
-// Redirecionar para a página de edição com o ID do usuário
+
 function editUser(userId) {
-    // Redireciona para edit.html com o ID como parâmetro
+    
     window.location.href = `edit.html?userId=${userId}`;
 }
 
-// Deletar usuário
+
 async function deleteUser(userId) {
     try {
         const response = await fetch(`http://localhost:3000/usuarios/${userId}`, {
@@ -43,7 +43,7 @@ async function deleteUser(userId) {
         if (!response.ok) throw new Error('Erro ao excluir usuário');
 
         alert('Usuário excluído com sucesso');
-        loadUsers(); // Recarrega a lista
+        loadUsers(); 
     } catch (error) {
         alert('Erro: ' + error.message);
     }
