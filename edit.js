@@ -1,12 +1,12 @@
-// Função para obter parâmetros da URL
+
 function getQueryParameter(name) {
     const params = new URLSearchParams(window.location.search);
     return params.get(name);
 }
 
-// Função para carregar os dados do usuário com base no ID da URL
+
 async function loadUserData() {
-    const userId = getQueryParameter('userId'); // Obtém o ID do usuário da URL
+    const userId = getQueryParameter('userId'); 
     if (!userId) {
         alert('ID do usuário não encontrado!');
         return;
@@ -17,7 +17,7 @@ async function loadUserData() {
         const user = await response.json();
 
         if (response.ok) {
-            // Preenche os campos do formulário com os dados do usuário
+            
             document.getElementById('email').value = user.email;
             document.getElementById('name').value = user.name;
             document.getElementById('age').value = user.age;
@@ -29,11 +29,11 @@ async function loadUserData() {
     }
 }
 
-// Função para enviar os dados atualizados do usuário
-document.getElementById('editUserForm').addEventListener('submit', async (e) => {
-    e.preventDefault(); // Impede o envio padrão do formulário
 
-    const userId = getQueryParameter('userId'); // Obtém o ID do usuário da URL
+document.getElementById('editUserForm').addEventListener('submit', async (e) => {
+    e.preventDefault(); 
+
+    const userId = getQueryParameter('userId'); 
     const email = document.getElementById('email').value;
     const name = document.getElementById('name').value;
     const age = document.getElementById('age').value;
@@ -49,7 +49,7 @@ document.getElementById('editUserForm').addEventListener('submit', async (e) => 
 
         if (response.ok) {
             alert('Usuário atualizado com sucesso!');
-            window.location.href = 'gestao.html'; // Retorna à página de gestão
+            window.location.href = 'gestao.html'; 
         } else {
             const errorData = await response.json();
             alert('Erro ao atualizar usuário: ' + errorData.message);
@@ -59,5 +59,5 @@ document.getElementById('editUserForm').addEventListener('submit', async (e) => 
     }
 });
 
-// Carrega os dados do usuário ao abrir a página
+
 loadUserData();
